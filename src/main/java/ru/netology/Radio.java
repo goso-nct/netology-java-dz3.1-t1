@@ -7,8 +7,8 @@ public class Radio {
     static final int MIN_VOLUME  = 0;
     static final int MAX_VOLUME  = 10;
 
-    private int station;
-    private int volume;
+    private int station = MIN_STATION;
+    private int volume  = MIN_VOLUME;
 
     public void nextStation() {
         station = (station != MAX_STATION) ? station + 1 : MIN_STATION ;
@@ -31,7 +31,9 @@ public class Radio {
     }
 
     public void setStation(int station) {
-        this.station = station;
+        // устанавливаем только корректное значение
+        if (station >= MIN_STATION && station <= MAX_STATION)
+            this.station = station;
     }
 
     public int getVolume() {
@@ -39,6 +41,8 @@ public class Radio {
     }
 
     public void setVolume(int volume) {
-        this.volume = volume;
+        // устанавливаем только корректное значение
+        if (volume >= MIN_VOLUME && volume <= MAX_VOLUME)
+            this.volume = volume;
     }
 }
