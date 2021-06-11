@@ -45,7 +45,7 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource(
-            value={ "9, 8", "8, 7", "6, 5", "1, 0", "0, 9" }
+            value={ "9, 8", "8, 7", "5, 4", "1, 0", "0, 9" }
     )
     void prevStation(int current, int expected) {
         radio.setStation(current);

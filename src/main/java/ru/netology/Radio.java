@@ -2,28 +2,28 @@ package ru.netology;
 
 public class Radio {
 
-    private int MIN_STATION = 0;
-    private int MAX_STATION = 9;
-    private int MIN_VOLUME  = 0;
-    private int MAX_VOLUME  = 10;
+    static final int MIN_STATION = 0;
+    static final int MAX_STATION = 9;
+    static final int MIN_VOLUME  = 0;
+    static final int MAX_VOLUME  = 10;
 
     private int station;
     private int volume;
 
     public void nextStation() {
-        station = (station != MAX_STATION) ? ++station : MIN_STATION ;
+        station = (station != MAX_STATION) ? station + 1 : MIN_STATION ;
     }
 
     public void prevStation() {
-        station = station != MIN_STATION ? --station : MAX_STATION ;
+        station = station != MIN_STATION ? station - 1 : MAX_STATION ;
     }
 
     public void increaseVolume() {
-        volume = volume != MAX_VOLUME ? ++volume : MAX_VOLUME ;
+        volume = volume != MAX_VOLUME ? volume + 1 : MAX_VOLUME ;
     }
 
     public void decreaseVolume() {
-        volume = volume != MIN_VOLUME ? --volume : MIN_VOLUME ;
+        volume = volume != MIN_VOLUME ? volume - 1 : MIN_VOLUME ;
     }
 
     public int getStation() {
