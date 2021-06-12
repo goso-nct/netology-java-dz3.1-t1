@@ -82,7 +82,7 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource(
-        value={ "10, 9", "9, 8", "6, 5", "1, 0", "0, 0" }
+        value={ "10, 9", "9, 8", "8, 7", "6, 5", "1, 0", "0, 0" }
     )
     void decreaseVolume(int current, int expected) {
         radio.setVolume(current);
