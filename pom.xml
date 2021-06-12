@@ -12,6 +12,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jacoco.reportPath>${project.basedir}/coverage-reports</jacoco.reportPath>
     </properties>
 
     <dependencies>
@@ -25,14 +26,7 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <failIfNoTests>true</failIfNoTests>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -46,6 +40,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -64,6 +59,9 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${jacoco.reportPath}</outputDirectory>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>default-check</id>
@@ -73,10 +71,15 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>CLASS</element>
+                                    <element>BUNDLE</element>
                                     <limits>
                                         <limit>
                                             <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>COMPLEXITY</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>1</minimum>
                                         </limit>
@@ -87,6 +90,16 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <failIfNoTests>true</failIfNoTests>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>

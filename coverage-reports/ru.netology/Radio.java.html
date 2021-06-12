@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Radio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">smart-house</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">Radio.java</span></div><h1>Radio.java</h1><pre class="source lang-java linenums">package ru.netology;
+
+<span class="fc" id="L3">public class Radio {</span>
+
+    static final int MIN_STATION = 0;
+    static final int MAX_STATION = 9;
+    static final int MIN_VOLUME  = 0;
+    static final int MAX_VOLUME  = 10;
+
+<span class="fc" id="L10">    private int station = MIN_STATION;</span>
+<span class="fc" id="L11">    private int volume  = MIN_VOLUME;</span>
+
+    public void nextStation() {
+<span class="fc bfc" id="L14" title="All 2 branches covered.">        station = (station != MAX_STATION) ? station + 1 : MIN_STATION ;</span>
+<span class="fc" id="L15">    }</span>
+
+    public void prevStation() {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        station = station != MIN_STATION ? station - 1 : MAX_STATION ;</span>
+<span class="fc" id="L19">    }</span>
+
+    public void increaseVolume() {
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        volume = volume != MAX_VOLUME ? volume + 1 : MAX_VOLUME ;</span>
+<span class="fc" id="L23">    }</span>
+
+    public void decreaseVolume() {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        volume = volume != MIN_VOLUME ? volume - 1 : MIN_VOLUME ;</span>
+<span class="fc" id="L27">    }</span>
+
+    public int getStation() {
+<span class="fc" id="L30">        return station;</span>
+    }
+
+    public void setStation(int station) {
+        // устанавливаем только корректное значение
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (station &gt;= MIN_STATION &amp;&amp; station &lt;= MAX_STATION)</span>
+<span class="fc" id="L36">            this.station = station;</span>
+<span class="fc" id="L37">    }</span>
+
+    public int getVolume() {
+<span class="fc" id="L40">        return volume;</span>
+    }
+
+    public void setVolume(int volume) {
+        // устанавливаем только корректное значение
+<span class="fc bfc" id="L45" title="All 4 branches covered.">        if (volume &gt;= MIN_VOLUME &amp;&amp; volume &lt;= MAX_VOLUME)</span>
+<span class="fc" id="L46">            this.volume = volume;</span>
+<span class="fc" id="L47">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
